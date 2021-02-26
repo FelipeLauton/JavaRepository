@@ -1,0 +1,29 @@
+package estruturaRepeticao;
+
+import java.util.Scanner;
+
+public class While {
+
+	public static void main(String[] args) {
+		
+		Scanner ler = new Scanner(System.in);
+		
+		int idade;
+		System.out.print("Digite sua idade:");
+		idade = ler.nextInt();
+		
+		while(idade >= 1) {
+			System.out.printf("Sua idade é %d",idade);
+			if(idade >= 18) {
+				System.out.printf("Você é de maior..");
+			} 
+			else {
+				System.out.printf("Você é de menor..");
+			}
+			System.out.print("Digite sua idade:");
+			idade = ler.nextInt();
+		}
+
+	}
+
+}

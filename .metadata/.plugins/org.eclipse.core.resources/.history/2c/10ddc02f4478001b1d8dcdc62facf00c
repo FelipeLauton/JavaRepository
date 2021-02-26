@@ -1,0 +1,24 @@
+package funcoes;
+
+import java.util.Scanner;
+
+public class TestaLaco {
+
+	public static void main(String[] args) {
+		
+		Scanner ler = new Scanner(System.in);
+		int num = 0, maior = 0;
+		
+		while(maior > num){
+			System.out.println("Escreva um número:");
+			num =ler.nextInt();
+			maior = maior + num;
+			if(num > maior) {
+				maior = num;
+			}
+			
+		} System.out.printf("O maior número é %d",maior);
+
+	}
+
+}

@@ -1,0 +1,32 @@
+package estruturaRepeticao;
+
+import java.util.Scanner;
+
+public class DoWhile {
+
+	public static void main(String[] args) {
+		
+		Scanner ler = new Scanner(System.in);
+		
+		int idade;
+		
+		System.out.print("Digite sua idade:");
+		idade = ler.nextInt();
+
+		do{                  // teste com a estrutura de repetição Do while
+			
+			System.out.printf("Sua idade é %d",idade);
+			if(idade >= 18) {
+				System.out.printf("\nVocê é de maior..");
+			} 
+			else {
+				System.out.printf("\nVocê é de menor..");
+			}
+			System.out.print("\nDigite sua idade:");
+			idade = ler.nextInt();
+		} while(idade >= 1);
+		System.out.println("Programa finalizado");
+
+	}
+
+}

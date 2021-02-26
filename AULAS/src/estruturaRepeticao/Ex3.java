@@ -1,0 +1,32 @@
+package estruturaRepeticao;
+
+import java.util.Scanner;
+
+public class Ex3 {
+
+	public static void main(String[] args) {
+		
+		//5- Crie um programa que leia um número do teclado até que encontre um
+		//número igual a zero. No final, mostre a soma dos números
+		//digitados.(DO...WHILE)
+		
+		Scanner input = new Scanner(System.in);
+		
+		int num = 0;
+		int soma = 0;
+		
+		System.out.print("Digite um número:");
+		num = input.nextInt();
+		
+		do {
+			soma = soma + num;
+			
+			System.out.print("Digite outro número:");
+			num = input.nextInt();
+		}while(num != 0);
+		
+		System.out.printf("O resultado da soma é %d",soma);
+
+	}
+
+}
