@@ -3,5 +3,6 @@
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="javax.management.timer.Timer"/>
     <fullyQualifiedTypeName name="CLASSES.Conta"/>
+    <fullyQualifiedTypeName name="revisao.Pessoa"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>
