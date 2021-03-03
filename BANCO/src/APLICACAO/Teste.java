@@ -3,6 +3,7 @@ package APLICACAO;
 import java.util.Scanner;
 
 import CLASSES.Conta;
+import CLASSES.ContaEstudantil;
 
 public class Teste {
 
@@ -10,12 +11,13 @@ public class Teste {
 
         Scanner leia = new Scanner(System.in);
         Conta conta3 = new Conta(345, "111.222.333-00", true);
+        ContaEstudantil conta = new ContaEstudantil(323,"222.333.444-45",5000, true);
         double valor;
         char opcao;
 
         System.out.println("Digite o valor:");
         valor = leia.nextDouble();
-        System.out.println("Debito ou Credito? D/C:");
+        System.out.println("Debito, Credito OU limite Estudantil? D/C/L:");
         opcao = leia.next().toUpperCase().charAt(0);
         if (opcao =='D')
         {
@@ -24,11 +26,16 @@ public class Teste {
         else if (opcao =='C') {
 
             conta3.credito(valor);
-        } else
+        } 
+        else if (opcao =='L') {
+
+            conta.usarEstudantil(valor);
+        }else
         {
             System.out.println("Opção invalida!!!");
         }
         System.out.println("Saldo atual: "+conta3.getSaldo());
+        System.out.println("Saldo atual: "+conta.getSaldo());
     }
 
 }
