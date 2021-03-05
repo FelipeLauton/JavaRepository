@@ -135,20 +135,19 @@ public class CaixaEletronico
 			{
 				System.out.printf("\nCONTA %s", opcoes[2]);
 				
+				System.out.println("\n DESEJA USAR SEU LIMITE ESTUDANTIL [S] SIM , [N] NÂO: ");
+				char limite = scan.next().toUpperCase().charAt(0);
+				
+				if(limite == 'S') {
+					System.out.println("\nO LIMITE DE R$5000.00 REAIS AGORA ESTÁ NO SEU SALDO.  ");
+					conta2.usarEstudantil(1);
+				}else if(limite == 'N') {
+					System.out.println("\n O LIMITE ESTUDANTIL NÃO FOI SOLICITADO.");
+				}
+				
 				do
 				{
 					System.out.printf("\nSALDO ATUAL: %.2f", conta2.getSaldo());
-					
-					System.out.println("\n DESEJA USAR SEU LIMITE ESTUDANTIL [S] SIM , [N] NÂO: ");
-					char limite = scan.next().toUpperCase().charAt(0);
-					
-					if(limite == 'S') {
-						System.out.println("\nO LIMITE DE R$5000.00 REAIS AGORA ESTÁ NO SEU SALDO.  ");
-						conta2.usarEstudantil(1);
-						System.out.printf("\nSALDO ATUAL: %.2f", conta2.getSaldo());
-					}else if(limite == 'N') {
-						System.out.println("\n O LIMITE ESTUDANTIL NÃO FOI SOLICITADO.");
-					}
 				
 					System.out.print("\nDEBITO OU CREDITO? [D] [C]: ");
 					movimento = scan.next().toUpperCase().charAt(0);
@@ -158,32 +157,27 @@ public class CaixaEletronico
 				
 					if(movimento=='D') 
 					{
-						conta1.debito(valor);
+						conta2.debito(valor);
 					}
 					else if(movimento=='C') 
 					{
-						conta1.credito(valor);
+						conta2.credito(valor);
 					}
 					else
 					{
 						System.out.print("OPÇÃO INVÁLIDA!");
 					}
-				
 					System.out.print("\nDESEJA FAZER OUTRA OPERAÇÃO ? [S] SIM , [N] NÃO: ");
 					opcao = scan.next().toUpperCase().charAt(0);
 				
 					operacoes++;
-				}while(operacoes<10 && opcao=='S');
+				}while(operacoes<10 && opcao=='S' || conta2.getSaldo() == 0);
+				
+				System.out.printf("\nSALDO ATUAL: %.2f", conta2.getSaldo());
+				System.out.println("OPERAÇÃO ENCERRADA");
 			}
 		}
 		
-		
-		/*
-		if(opcao==1)
-		{
-			
-		}
-		*/
 		scan.close();
 	}
 }
