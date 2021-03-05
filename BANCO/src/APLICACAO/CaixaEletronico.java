@@ -21,7 +21,7 @@ public class CaixaEletronico
 		
 		//criei o objeto conta1
 		ContaPoupanca conta1 = new ContaPoupanca(1,"1",25);
-		ContaEstudantil conta2 = new ContaEstudantil(2,"1",5000,true);
+		ContaEstudantil conta2 = new ContaEstudantil(2,"1",0,true);
 		
 		//Textos so pra deixar bonito
 		System.out.print("|BANCO BANCO|");

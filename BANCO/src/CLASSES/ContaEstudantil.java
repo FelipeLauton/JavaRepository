@@ -17,25 +17,17 @@ public class ContaEstudantil extends Conta {
 	}
 	//metodo
 	public void usarEstudantil(double limite) {
-		if(limite <= 5000) {
-			saldo = 5000;
-		}
-		if(limite > 0) {
-			saldo = 5000;
+		if(limite <= 5000 && limite > 0) {
+			super.credito(super.getSaldo() + 5000);
 		}
 		if(limite < 0) {
-			saldo = 0;
+			super.credito(super.getSaldo() + 0);
 			System.out.println("Opção invalida!!!");
 		}
 		if(limite > 5000) {
-			saldo = 0;
+			super.credito(super.getSaldo() + 0);
 		}
 	}
-		
-		
-	
-	
-	
 	
 
 }
