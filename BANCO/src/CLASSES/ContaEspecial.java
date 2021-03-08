@@ -1,5 +1,5 @@
 package CLASSES;
-
+//pronto
 public class ContaEspecial extends Conta {
 	//double: limite
 	//(-) usarLimite: double
@@ -7,27 +7,18 @@ public class ContaEspecial extends Conta {
 	
 	//ATRIBUTO
 	private double limite;
-	//private int quantidadeMovimentos =0;
 	
-	//CONSTRUTOR
-	//public ContaEspecial(int numero, double limite) {
-	//	super(numero);
-	//	this.limite = limite;
-	//}
-	//CONSTRUTOR - sobrecarga
+	//CONSTRUTOR 
 	 public ContaEspecial(int numero, String cpf, double limite) {
 		super(numero, cpf);
 		this.limite = limite;
 		}
-	
+	//Sobrecarga construtor
 	public ContaEspecial(int numero, String cpf, boolean ativa, double limite) {
 		super(numero, cpf, ativa);
 		this.limite = limite;
 	}
 	//ENCAPSULAMENTO
-	//public void setQuantidadeMovimentos() {
-	//	this.quantidadeMovimentos+=1;
-	//}
 	public double getLimite() {
 		return limite;
 	}
@@ -36,39 +27,28 @@ public class ContaEspecial extends Conta {
 	}
 	//metodos
 	public void usarlimite(double valor) {
-		//double saldo = this.getSaldo();
-		if (valor <= saldo) {
-			this.saldo = saldo- valor;
+		if (valor <= super.getSaldo()) {
+			super.debito(valor);
 			System.out.println("Debito aprovado!!");
 		}
-		else if (valor<=limite && valor>saldo ) {
-			//limite = (saldo+limite) - valor;
-			//saldo = valor;
-			//saldo-=valor;
-			//limite = limite-saldo;
-			//limite -=valor;
-			//saldo += valor;
-			limite = limite -(valor-saldo);
-			saldo =0;
+		else if (valor<=limite && valor>super.getSaldo() ) {
+			double p = valor - super.getSaldo();
+			super.credito(p);
+			limite = limite - p;
+			super.debito(valor);
 			System.out.println("Debito aprovado!!");
 			System.out.println("Voce usou do seu Limite Especial. Verifique seu saldo e limite no seu App.");
 		}
-		//teste else inicio
-		else if(valor > limite && valor > saldo && valor<(saldo+limite)) {
-			limite = limite -(valor-saldo);
-			saldo =0;
+		else if(valor >= limite && valor > super.getSaldo() && valor<=(super.getSaldo()+limite)) {
+			double p = valor - super.getSaldo();
+			super.credito(p);
+			limite = limite - p;
+			super.debito(valor);
 			System.out.println("Debito aprovado!!");
 			System.out.println("Voce usou do seu Limite Especial. Verifique seu saldo e limite no seu App.");
-		}//teste else fim
-		else if (valor > (saldo+limite)) {
+		}
+		else if (valor > (super.getSaldo()+limite)) {
 			System.out.println("Esta operação excede o seu Saldo e o Limite!");
-		}
-		else if(saldo == 0 && valor >limite) {
-			System.out.println("Voce não tem saldo e limite suficiente!");
-		}		
+		}	
     }
-	/*@Override
-	public void credito(double valor) {
-		super.credito(valor);
-		setQuantidadeMovimentos();*/
-	}
+}

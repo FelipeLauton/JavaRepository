@@ -10,11 +10,19 @@ public class ContaEmpresarial extends Conta
      */
 
     Scanner ler = new Scanner(System.in);
-    double emprestimoEmpresa = 0;
+    double emprestimoEmpresa;
 
-    public ContaEmpresarial(int numero, String cpf) 
+    public ContaEmpresarial(int numero, String cpf, double emprestimoEmpresa) 
     {
         super(numero, cpf);
+        this.emprestimoEmpresa = emprestimoEmpresa;
+    }
+
+    public double getEmprestimoEmpresa() {
+        return emprestimoEmpresa;
+    }
+
+    public void setEmprestimoEmpresa(double emprestimoEmpresa) {
         this.emprestimoEmpresa = emprestimoEmpresa;
     }
 
@@ -29,48 +37,21 @@ public class ContaEmpresarial extends Conta
             System.out.println("Digite o valor que deseja pegar emprestado: ");
             double valor = ler.nextDouble();
 
-            if (valor + emprestimoEmpresa <= 10000) 
+            if (valor <= emprestimoEmpresa) 
             {
-                FazerEmprestimo(valor);
+                credito(valor);
+                System.out.println("SALDO ATUAL R$: " + super.getSaldo());
+                emprestimoEmpresa -= valor;
+                System.out.println("É POSSÍVEL PEDIR EMPRESTADO R$: " + this.getEmprestimoEmpresa());
+            }
+            else if (emprestimoEmpresa==0) 
+            {
+                System.out.println("NÃO É POSSÍVEL REALIZAR EMPRESTIMO!");
             }
             else
             {
-                System.out.println("Opa! Valor indisponível");
-            }
-        }
-    }
-
-    public void FazerEmprestimo(double valor)
-    {
-
-        emprestimoEmpresa = emprestimoEmpresa + valor;
-        this.saldo = this.saldo + emprestimoEmpresa;
-
-        //credito(valor);
-        System.out.println("Saldo Atual R$: " + saldo);
-    }
-
-    @Override
-    public void debito(double valor) 
-    {
-        this.saldo = this.saldo - valor;
-    }
-
-    @Override
-    public void credito(double valor) 
-    {
-        if (valor <= saldo) 
-        {
-            System.out.println("Valor insuficiente em conta.");
-            if (emprestimoEmpresa < 10000) 
-            {
-                pedirEmprestimo();
-                debito(valor);
-        }
-        else 
-        {
-            this.saldo = this.saldo + valor;
-            System.out.println("Saldo Atual R$" + this.saldo);
+                System.out.println("OPA! VALOR INDISPONÍVEL");
+                System.out.println("É POSSÍVEL PEDIR EMPRESTIMO DE R$: " + this.getEmprestimoEmpresa());
             }
         }
     }
