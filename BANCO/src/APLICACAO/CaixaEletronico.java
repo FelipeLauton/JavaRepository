@@ -25,7 +25,7 @@ public class CaixaEletronico
 		
 		//criei o objeto conta1
 		ContaPoupanca conta1 = new ContaPoupanca(1,"1",25);
-		ContaCorrente conta2 = new ContaCorrente(2,"2",3);
+		ContaCorrente conta2 = new ContaCorrente(2,"2",true,3);
 		ContaEspecial conta3 = new ContaEspecial(3,"3",1000);
 		ContaEmpresarial conta4 = new ContaEmpresarial(4,"4",10000);
 		ContaEstudantil conta5 = new ContaEstudantil(5,"5",0,true);
@@ -66,13 +66,13 @@ public class CaixaEletronico
 				//mostra conta e o tipo de conta de acordo com a posicao 0 do vetor opcoes
 				System.out.printf("\nCONTA %s", opcoes[0]);
 				
-				//pego a data para verificar o aniversario da poupanca
-				System.out.printf("\nDIGITE A DATA DE HOJE: ");
-				data = scan.nextInt();
-				
 				//loop para fazer 10 operacoes no maximo ou ate digitar qualquer outra caractere q nao seja o S
 				do
 				{
+					//pego a data para verificar o aniversario da poupanca
+					System.out.printf("\nDIGITE A DATA DE HOJE: ");
+					data = scan.nextInt();
+					
 					System.out.printf("\nSALDO ATUAL: %.2f", conta1.getSaldo());
 				
 					System.out.print("\nDEBITO OU CREDITO? [D] [C]: ");
@@ -224,15 +224,17 @@ public class CaixaEletronico
                 System.out.print("\nDEBITO OU CREDITO? [D] [C]: ");
                 movimento = scan.next().toUpperCase().charAt(0);
 
-                System.out.print("DIGITE O VALOR: ");
-                valor = scan.nextDouble();
-
+                
                 if(movimento=='D') 
                 {
+                	System.out.print("DIGITE O VALOR: ");
+                    valor = scan.nextDouble();
                     conta4.debito(valor);
                 }
                 else if(movimento=='C') 
                 {
+                	System.out.print("DIGITE O VALOR: ");
+                    valor = scan.nextDouble();
                     conta4.credito(valor);
                 }
                 else

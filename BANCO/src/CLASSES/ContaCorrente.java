@@ -5,10 +5,12 @@ public class ContaCorrente extends Conta {
     protected int contadorTalao;
 
     //CONSTRUTOR
-    public ContaCorrente(int numero, String cpf, int contadorTalao) {
-        super(numero, cpf);
+    public ContaCorrente(int numero, String cpf,boolean ativa, int contadorTalao) {
+        super(numero, cpf, ativa);
         this.contadorTalao = contadorTalao;
     }
+    
+    
     //ENCAPSULAMENTO
     public int getContadorTalao() {
         return contadorTalao;
@@ -22,6 +24,6 @@ public class ContaCorrente extends Conta {
     public void pediTalao()
     {
     	contadorTalao--;	
-    	System.out.printf("Quantidade de talões: %d", contadorTalao);
+    	System.out.printf("QUANTIDADE DE TALÕES DISPONIVEIS: %d", contadorTalao);
     }   
 }
